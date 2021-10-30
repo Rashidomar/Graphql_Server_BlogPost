@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Post = require('./post')
 const authorSchema = mongoose.Schema({
 
-    userName: {
+    username: {
         type: String,
       },
       posts: {

@@ -1,12 +1,12 @@
-import {
+const {
     GraphQLID,
     GraphQLInt,
     GraphQLList,
     GraphQLObjectType,
     GraphQLString,
-  } from "graphql";
+  } = require("graphql");
   
-  export const AuthorType = new GraphQLObjectType({
+  const AuthorType = new GraphQLObjectType({
     name: "Author",
     fields: () => ({
       _id: {
@@ -21,7 +21,7 @@ import {
     }),
   });
   
-  export const PostType = new GraphQLObjectType({
+  const PostType = new GraphQLObjectType({
     name: "Post",
     fields: () => ({
       _id: {
@@ -47,4 +47,9 @@ import {
       },
     }),
   });
+
+//   module.exports = AuthorType
+module.exports = PostType
+
+  
   

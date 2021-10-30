@@ -1,4 +1,4 @@
-import { GraphQLID, GraphQLList, GraphQLObjectType } from "graphql";
+const { GraphQLID, GraphQLList, GraphQLObjectType } = require("graphql");
 const Post = require('../models/post')
 const PostType = require('./types')
 
@@ -31,4 +31,4 @@ const ParentQuery = new GraphQLObjectType({
   },
 });
 
-export default ParentQuery;
+module.exports = ParentQuery;

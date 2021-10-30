@@ -1,10 +1,14 @@
-import { GraphQLSchema } from "graphql";
-import mutation from "./mutations.js";
-import RootQuery from "./queries.js";
+// import { GraphQLSchema } from "graphql";
+// import mutation from "./mutations.js";
+// import ParentQuery from "./queries.js";
+const { GraphQLSchema } = require('graphql')
+const { mutation } = require('./mutations')
+const { ParentQuery } = require('./queries')
+
 
 const schema = new GraphQLSchema({
-  query: RootQuery,
+  query: ParentQuery,
   mutation: mutation,
 });
 
-export default schema;
+module.exports =  schema;

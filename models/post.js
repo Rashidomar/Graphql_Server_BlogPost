@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Comments = require('./comment')
+const {Comments, commentSchema} = require('./comment')
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -20,7 +20,7 @@ const postSchema = new mongoose.Schema({
       type: String,
     },
     comments: {
-      type: [Comment],
+      type: [Comments],
     },
     likes: {
       type: Number,

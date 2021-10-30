@@ -1,6 +1,6 @@
-import { GraphQLID, GraphQLObjectType, GraphQLString } from "graphql";
+const { GraphQLID, GraphQLObjectType, GraphQLString } = require("graphql");
 const Post = require('../models/post')
-import { AuthorType, PostType } from "./types.js";
+const { AuthorType, PostType } = require("./types.js");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -41,4 +41,4 @@ const mutation = new GraphQLObjectType({
   },
 });
 
-export default mutation;
+module.exports = mutation;
