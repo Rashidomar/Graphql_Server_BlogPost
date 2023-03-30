@@ -1,4 +1,4 @@
-# CSCD322_Graphql_Server
+# Graphql_Server_BlogPost
 
 # Backend For A Blog Website Using Graphql And Nodejs.
 
