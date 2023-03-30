@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const {Comments, commentSchema} = require('./comment')
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -16,12 +15,6 @@ const postSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Author",
     },
-    banner: {
-      type: String,
-    },
-    comments: {
-      type: [Comments],
-    },
     likes: {
       type: Number,
       default: 0,
@@ -34,4 +27,4 @@ const postSchema = new mongoose.Schema({
   
   const Post = mongoose.model("Post", postSchema);
 
-  module.exports = Post
+  module.exports = { Post }

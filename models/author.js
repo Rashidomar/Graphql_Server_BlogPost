@@ -1,15 +1,12 @@
 const mongoose = require('mongoose')
-const Post = require('./post')
 const authorSchema = mongoose.Schema({
 
     username: {
         type: String,
       },
-      posts: {
-        type: [Post],
-      },
-})
+
+}, { timestamps: true })
 
 const Author = mongoose.model('Author', authorSchema)
 
-module.exports = Author
+module.exports = { Author }
