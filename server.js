@@ -14,7 +14,7 @@ const server = new ApolloServer(
 const dbconnect = async () =>{
   try{
       mongoose.set('strictQuery', true);
-      await mongoose.connect('mongodb://127.0.0.1/graphql', { useNewUrlParser: true, useUnifiedTopology: true, }).then(()=>{
+      await mongoose.connect('mongodb://127.0.0.1/graphql_blog', { useNewUrlParser: true, useUnifiedTopology: true, }).then(()=>{
         server.listen(5000, ()=>{
           console.log("Server is Live")
         })

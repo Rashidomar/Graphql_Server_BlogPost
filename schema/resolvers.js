@@ -1,6 +1,7 @@
 const { Post }= require("../models/post")
 const { Author } = require("../models/author")
 const {Comment} = require("../models/comment")
+const { response } = require("express")
 
 const resolvers = {
     Query:{
@@ -18,7 +19,8 @@ const resolvers = {
 
         author: async(_, {id})=>{
             return await Author.findById(id)
-        }
+        }, 
+
 
     },
 
@@ -39,13 +41,12 @@ const resolvers = {
                 post:postDoc
             }
 
-
         },
         createAuthor: async(_, args,)=>{
             const {username} = args.input
 
             const newAuthor = new Author({
-                usernam:username
+                username:username
             })
 
             const authorDoc = await newAuthor.save()
@@ -75,9 +76,91 @@ const resolvers = {
                 message: 'Comment successfully Created!',
                 comment:commentDoc
             }
+        },
 
+        editAuthor: async(_, args)=>{
+            const { username } = args.input
+            const id  = args.id
+            const author = await Author.findByIdAndUpdate(id, {username:username})  
+            console.log(author)
+            return{
+                code: 200,
+                success: true,
+                message: 'Author successfully Updated!',
+                author: author
+            }
 
         },
+
+        editComment: async(_, args)=>{
+            const { message,} = args.input
+            const id  = args.id
+            const comment = await Comment.findByIdAndUpdate(id, {message:message})  
+            return{
+                code: 200,
+                success: true,
+                message: 'Comment successfully Updated!',
+                comment: comment
+            }
+
+        },
+
+        editPost: async(_, args)=>{
+            const {title, details, } = args.input
+            const id  = args.id
+            const post = await Post.findByIdAndUpdate(id, {title:title, details:details })  
+            console.log(author)
+            return{
+                code: 200,
+                success: true,
+                message: 'Post successfully Updated!',
+                post: post
+            }
+
+        },
+
+        deletePost: async(_, {id})=>{
+            const post = await Post.findByIdAndDelete(id)
+            return{
+                code: 200,
+                success: true,
+                message: 'Post successfully Deleted!',
+                post: post
+            }
+        },
+
+        deleteComment: async(_, {id})=>{
+            const comment = await Comment.findByIdAndDelete(id)
+            return{
+                code: 200,
+                success: true,
+                message: 'Comment successfully Deleted!',
+                comment: comment
+            }
+        },
+
+        deleteAuthor: async(_, {id})=>{
+            const author = await Author.findByIdAndDelete(id)
+            return{
+                code: 200,
+                success: true,
+                message: 'Author successfully Deleted!',
+                author: author
+            }
+        },
+
+
+
+        // deleteAuthorWithNull: async()=>{
+        //     const foundAuthor = await Author.deleteMany({username:null})
+        //     return{
+        //         code: 200,
+        //         success: true,
+        //         message: 'Found successfully',
+        //         author:foundAuthor
+        //     }
+        // }
+  
     }
 
 
