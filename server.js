@@ -2,6 +2,7 @@ const { ApolloServer } = require("apollo-server")
 const {resolvers} = require("./schema/resolvers")
 const {typeDefs} = require("./schema/typeDefs")
 const mongoose  = require("mongoose")
+require("dotenv").config()
 
 const server = new ApolloServer(
   {
@@ -11,11 +12,15 @@ const server = new ApolloServer(
 }
 )
 
+const port = process.env.PORT
+const db_url = process.env.URL
+
+
 const dbconnect = async () =>{
   try{
       mongoose.set('strictQuery', true);
-      await mongoose.connect('mongodb://127.0.0.1/graphql_blog', { useNewUrlParser: true, useUnifiedTopology: true, }).then(()=>{
-        server.listen(5000, ()=>{
+      await mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true, }).then(()=>{
+        server.listen(port, ()=>{
           console.log("Server is Live")
         })
       })
